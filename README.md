@@ -1,1 +1,1 @@
-# Secure-Command
+securecommand
