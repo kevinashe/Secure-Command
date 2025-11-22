@@ -4,7 +4,7 @@ import {
   Shield, LogOut, Menu, X, LayoutDashboard, MapPin, Users,
   Calendar, AlertTriangle, Package, MessageSquare, CreditCard,
   Building, Bell, Radio, Wallet, Settings, BarChart3, History,
-  FileText, User, DollarSign, UserPlus
+  FileText, User, DollarSign, UserPlus, Globe
 } from 'lucide-react';
 
 interface LayoutProps {
@@ -37,6 +37,8 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onViewCha
         { id: 'notifications', icon: Bell, label: 'Notifications' },
         { id: 'billing', icon: CreditCard, label: 'Billing' },
         { id: 'payments', icon: Wallet, label: 'Payments' },
+        { id: 'website-cms', icon: Globe, label: 'Website Content' },
+        { id: 'system-settings', icon: Settings, label: 'System Settings' },
         { id: 'profile', icon: User, label: 'Profile Settings' },
       ];
     }
@@ -75,6 +77,15 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onViewCha
       ];
     }
 
+    if (profile?.role === 'client') {
+      return [
+        { id: 'client-portal', icon: LayoutDashboard, label: 'Dashboard' },
+        { id: 'messages', icon: MessageSquare, label: 'Messages' },
+        { id: 'notifications', icon: Bell, label: 'Notifications' },
+        { id: 'profile', icon: User, label: 'Profile Settings' },
+      ];
+    }
+
     return [
       ...baseItems,
       { id: 'patrol', icon: MapPin, label: 'Patrol' },
@@ -105,9 +116,11 @@ export const Layout: React.FC<LayoutProps> = ({ children, currentView, onViewCha
                   className="h-10 w-10 object-contain"
                 />
               ) : (
-                <div className="bg-blue-600 p-2 rounded-lg">
-                  <Shield className="h-6 w-6 text-white" />
-                </div>
+                <img
+                  src="/icon.svg"
+                  alt="SecureCommand Logo"
+                  className="h-10 w-10"
+                />
               )}
               <div>
                 <h1 className="text-lg font-bold text-gray-900">SecureCommand</h1>
